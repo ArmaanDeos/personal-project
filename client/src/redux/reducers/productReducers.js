@@ -19,7 +19,8 @@ const productSlice = createSlice({
       state.isLoading = false;
       state.isError = false;
       state.products = action.payload;
-      state.productCount = action.payload.data.length;
+      state.productCount = action.payload.message;
+      state.resultPerPage = action.payload.data.length;
     },
 
     getAllProductFail: (state, action) => {

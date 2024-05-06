@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { CgMouse } from "react-icons/cg";
-import Product from "./Product";
 import MetaData from "../Layouts/MetaData";
 import { clearError, getProducts } from "../../redux/apiCalling/productApi";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../Layouts/Loader/Loader";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ProductCard from "./ProductCard";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ const Home = () => {
     (state) => state.product
   );
   let productsItem = products.data;
+  console.log(productsItem);
 
   // State to track if error notification has been shown
   const [errorShown, setErrorShown] = useState(false);
@@ -65,7 +66,7 @@ const Home = () => {
           <div className="container" id="container">
             {productsItem &&
               productsItem.map((product) => (
-                <Product product={product} key={product._id} />
+                <ProductCard product={product} key={product._id} />
               ))}
           </div>
         </>

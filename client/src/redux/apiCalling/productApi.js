@@ -12,15 +12,18 @@ import {
 } from "../reducers/productDetailReducers";
 
 //* Get Products
-export const getProducts = async (dispatch) => {
-  dispatch(getAllProductStart());
-  try {
-    const res = await publicRequest.get("/products");
-    dispatch(getAllProductSuccess(res.data));
-  } catch (error) {
-    dispatch(getAllProductFail(error));
-  }
-};
+export const getProducts =
+  (keyword = "", currentPage = "1") =>
+  async (dispatch) => {
+    dispatch(getAllProductStart());
+    try {
+      let uri = `/products?keyword=${keyword}&page=${currentPage}`;
+      const res = await publicRequest.get(uri);
+      dispatch(getAllProductSuccess(res.data));
+    } catch (error) {
+      dispatch(getAllProductFail(error));
+    }
+  };
 
 //* Get Product Details
 export const getProductDetails = (id) => async (dispatch) => {

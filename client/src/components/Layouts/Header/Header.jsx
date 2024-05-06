@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { FaUserPlus } from "react-icons/fa";
-
 import logo from "../../../images/shop-logo.png";
 import { ReactNavbar } from "overlay-navbar";
 import { FaSearch } from "react-icons/fa";
@@ -20,10 +19,6 @@ const options = {
   link2Text: "Products",
   link3Text: "Contact",
   link4Text: "About",
-  link1Url: "/",
-  link2Url: "/products",
-  link3Url: "/contact",
-  link4Url: "/about",
   link1Size: "1.5vmax",
   link1Color: "rgba(35, 35, 35,0.8)",
   nav1justifyContent: "flex-end",
@@ -48,10 +43,15 @@ const Header = () => {
         {...options}
         searchIcon={true}
         SearchIconElement={FaSearch}
+        searchIconUrl="/search"
         profileIcon={true}
         ProfileIconElement={FaUserPlus}
         cartIcon={true}
         CartIconElement={FiShoppingBag}
+        link1Url="/"
+        link2Url="/products"
+        link3Url="/contact"
+        link4Url="/about"
       />
     </Router>
   );
